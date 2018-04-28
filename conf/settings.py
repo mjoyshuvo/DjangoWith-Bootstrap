@@ -14,6 +14,7 @@ APP_HOST = '0.0.0.0:8000'
 API_HOST = '0.0.0.0:8000'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 EXTERNAL_APPS = [
@@ -21,7 +22,8 @@ EXTERNAL_APPS = [
 ]
 
 PROJECT_APPS = [
-    'apps.home'
+    'apps.home',
+    'apps.user',
 ]
 
 INSTALLED_APPS = ['django.contrib.admin',
@@ -55,6 +57,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_pro')
 
 TEMPLATES = [
     {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
+        'APP_DIRS': False,
+        'OPTIONS': {
+            'environment': 'conf.jinja2.environment',
+            'extensions': ['jinja2.ext.with_']
+        },
+    },
+{
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, ''), ],
         'APP_DIRS': True,
@@ -67,15 +78,6 @@ TEMPLATES = [
             ],
         },
     },
-    {
-        'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
-        'APP_DIRS': False,
-        'OPTIONS': {
-            'environment': 'conf.jinja2.environment',
-            'extensions': ['jinja2.ext.with_']
-        },
-    }
 
 ]
 WSGI_APPLICATION = 'conf.wsgi.application'
@@ -83,14 +85,20 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'test',
+#         'USER': 'workflow',
+#         'PASSWORD': '123456',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test',
-        'USER': 'workflow',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'test3'),
     }
 }
 
@@ -124,3 +132,5 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+AUTH_USER_MODEL = 'user.UserProfile'

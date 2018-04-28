@@ -157,15 +157,21 @@
     <div class="login-container">
         <div id="output">
             {% if form.errors %}
-                <p style="color:red;">Your username and password didn't match. Please try again.</p>
+                <div class="alert alert-danger" role="alert">
+                    Your username and password didn't match. Please try again.
+                </div>
             {% endif %}
 
             {% if next %}
                 {% if request.user.is_authenticated %}
-                    <p style="color:red;">Your account doesn't have access to this page. To proceed,
-                        please login with an account that has access.</p>
+                    <div class="alert alert-danger" role="alert">
+                        Your account doesn't have access to this page. To proceed,
+                        please login with an account that has access.
+                    </div>
                 {% else %}
-                    <p style="color:red;">Please login to see this page.</p>
+                    <div class="alert alert-danger" role="alert">
+                        Please login to see this page.
+                    </div>
                 {% endif %}
             {% endif %}
         </div>
@@ -184,18 +190,20 @@
                     <input type="hidden" name="next" value="{{ next }}"/>
                 </div>
                 <br>
-                <p><a href="{{  url('password_reset') }}">Lost password?</a></p>
+                <p><a href="{{ url('password_reset') }}">Lost password?</a></p>
             </form>
         </div>
     </div>
 </div>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" >
+<script type="text/javascript">
     {#$(document).ready(function(){#}
     {#    $("#id_username").attr('placeholder', '{{form.username.label}}');#}
     {#    $("#id_email").attr('placeholder', '{{form.email.label}}');#}
-    {#});#}
+    {#})
+    ;
+    #}
 </script>
 </body>
 </html>
