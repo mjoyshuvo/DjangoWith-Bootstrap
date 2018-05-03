@@ -26,6 +26,6 @@ python manage.py runserver
 ```
 ## Built With
 
-* [Django](https://www.djangoproject.com/) - The web framework used
-* [Django Rest Framework](http://www.django-rest-framework.org/) - Rest Api
-* [Bootstrap 4](https://getbootstrap.com/) - HTML Template
+* [Django](https://www.djangoproject.com/) - The web framework used.
+* [Django Rest Framework](http://www.django-rest-framework.org/) - Rest Api.
+* [Bootstrap 4](https://getbootstrap.com/) - HTML Template.
