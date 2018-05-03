@@ -1,5 +1,5 @@
 # DjangoWith-Bootstrap
-Basic django Structure with login, logout, pagination, model permission, custom user management and Bootstrap integration 
+Basic django structure with login, logout, pagination, model permission, custom user management and Bootstrap integration 
 
 ## Prerequisites
 * Python
