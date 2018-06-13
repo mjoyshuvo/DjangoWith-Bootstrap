@@ -56,6 +56,7 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [DjangoModelPermissions]
     serializer_class = UserSerializer
     pagination_class = LargeResultsSetPagination
+    # pagination_class = LimitOffsetPagination
     model = UserProfile
     queryset = UserProfile.objects.all()
     search_fields = ('first_name', 'last_name')
