@@ -50,10 +50,18 @@ class UserSerializer(serializers.ModelSerializer):
         user = UserProfile.objects.create(**validated_data)
         return user
 
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            if attr == 'password':
+                instance.set_password(value)
+            else:
+                setattr(instance, attr, value)
+        instance.save()
+        return instance
 
 class UserViewSet(viewsets.ModelViewSet):
     filter_backends = (SearchFilter, OrderingFilter)
-    permission_classes = [DjangoModelPermissions]
+    # permission_classes = [DjangoModelPermissions]
     serializer_class = UserSerializer
     pagination_class = LargeResultsSetPagination
     # pagination_class = LimitOffsetPagination
